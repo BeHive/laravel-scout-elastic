@@ -1,8 +1,8 @@
 # Laravel Scout Elasticsearch Driver
 
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
-This package makes is the [Elasticsearch](https://www.elastic.co/products/elasticsearch) driver for Laravel Scout.
+This package is a fork of [Eric Tamayo's](https://github.com/ErickTamayo) [laravel-scout-elastic](https://github.com/ErickTamayo/laravel-scout-elastic) and is a [Elasticsearch](https://www.elastic.co/products/elasticsearch) driver for Laravel Scout.
 
 ## Contents
 
@@ -16,7 +16,7 @@ This package makes is the [Elasticsearch](https://www.elastic.co/products/elasti
 You can install the package via composer:
 
 ``` bash
-composer require tamayo/laravel-scout-elastic
+composer require romsa/laravel-scout-elastic
 ```
 
 You must add the Scout service provider and the package service provider in your app.php config:

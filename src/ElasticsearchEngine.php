@@ -16,7 +16,7 @@ class ElasticsearchEngine extends Engine
      * @var string
      */
     protected $index;
-    
+
     /**
      * Elastic where the instance of Elastic|\Elasticsearch\Client is stored.
      *
@@ -118,7 +118,7 @@ class ElasticsearchEngine extends Engine
             'size' => $perPage,
         ]);
 
-       $result['nbPages'] = $result['hits']['total']/$perPage;
+        $result['nbPages'] = $result['hits']['total']/$perPage;
 
         return $result;
     }
@@ -216,17 +216,16 @@ class ElasticsearchEngine extends Engine
         }
 
         $keys = collect($results['hits']['hits'])
-                        ->pluck('_id')->values()->all();
+            ->pluck('_id')->values()->all();
 
-        $models = $model->getScoutModelsByIds(
-            $builder, $keys
-        )->keyBy(function ($model) {
-            return $model->getScoutKey();
-        });
+        $returnable = [];
 
-        return collect($results['hits']['hits'])->map(function ($hit) use ($model, $models) {
-            return isset($models[$hit['_id']]) ? $models[$hit['_id']] : null;
-        })->filter()->values();
+        foreach ($results['hits']['hits'] as $v){
+            $returnable[] = $v['_source'];
+        }
+
+        return collect($returnable);
+
     }
 
     /**
